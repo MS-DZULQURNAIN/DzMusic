@@ -29,7 +29,7 @@ from YukkiMusic.utils.database import (add_served_chat,
                                        get_userss, is_on_off,
                                        is_served_private_chat)
 from YukkiMusic.utils.decorators.language import LanguageStart
-from YukkiMusic.utils.inline import (help_pannel, private_panel,
+from YukkiMusic.utils.inline import (private_panel,
                                      start_pannel)
 
 loop = asyncio.get_running_loop()
@@ -46,11 +46,11 @@ async def start_comm(client, message: Message, _):
     await add_served_user(message.from_user.id)
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
-        if name[0:4] == "help":
-            keyboard = help_pannel(_)
-            return await message.reply_text(
-                _["help_1"], reply_markup=keyboard
-            )
+        #if name[0:4] == "help":
+            #keyboard = help_pannel(_)
+            #return await message.reply_text(
+                #_["help_1"], reply_markup=keyboard
+           # )
         if name[0:4] == "song":
             return await message.reply_text(_["song_2"])
         if name[0:3] == "sta":
